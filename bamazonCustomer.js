@@ -83,9 +83,11 @@ function displayProducts(error, result)
 						console.log("Press CTRL + C to exit");
 					});
 			}
-			
+
 			else
+			{
 				console.log("Unfortunately, Bamazon does not have enough " + item.product_name + " at this time. Please try again later");
 				console.log("Press CTRL + C to exit.");
+			}
 		});
 }
