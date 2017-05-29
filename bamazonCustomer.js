@@ -74,15 +74,18 @@ function displayProducts(error, result)
 			var item = result[purchaseData.id - 1];
 			if(item.stock_quantity >= purchaseData.quantity)
 			{
+				// update the data
 				var newQuantity = item.stock_quantity - purchaseData.quantity;
 				connection.query("UPDATE products SET ? WHERE ?", [{stock_quantity : newQuantity}, {item_id : purchaseData.id}], function(error, result)
 					{
 						var cost = item.price * purchaseData.quantity;
 						console.log("Purchase successful! Your purchase cost was $" + cost.toFixed(2));
+						console.log("Press CTRL + C to exit");
 					});
 			}
+			
 			else
 				console.log("Unfortunately, Bamazon does not have enough " + item.product_name + " at this time. Please try again later");
+				console.log("Press CTRL + C to exit.");
 		});
-	// console.log(res);	
 }
